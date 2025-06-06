@@ -6,6 +6,7 @@ on: [push, pull_request]
 jobs:
     quality:
         runs-on: ubuntu-latest
+
         steps:
         -   name: Checkout code
             uses: actions/checkout@v4
@@ -15,18 +16,11 @@ jobs:
             with:
                 python-version: '3.11'
 
-        -   name: Install linters and formatters
-            run: |
-                pip install black flake8 isort mypy
+        -   name: Install Ruff
+            run: pip install ruff
 
-        -   name: Run Black (formatter)
-            run: black --check .
+        -   name: Run Ruff (lint + formatting + import order)
+            run: ruff check .
 
-        -   name: Run Flake8 (linter)
-            run: flake8 your_package/ tests/
-
-        -   name: Run isort (import sorter)
-            run: isort --check-only .
-
-        -   name: Run mypy (type checker)
-            run: mypy your_package/
+        -   name: Run Ruff format check (like Black)
+            run: ruff format --check .
