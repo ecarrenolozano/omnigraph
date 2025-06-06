@@ -4,27 +4,7 @@ name: Code Quality
 on: [push, pull_request]
 
 jobs:
-    code-quality-checks-pre:
-        runs-on: ubuntu-latest
-
-        steps:
-        -   name: Checkout code
-            uses: actions/checkout@v4
-
-        -   name: Set up Python
-            uses: actions/setup-python@v5
-            with:
-                python-version: '3.11'
-
-        -   name: Install Ruff
-            run: pip install ruff
-
-        -   name: Run Ruff (lint + formatting + import order)
-            run: ruff check .
-
-        -   name: Run Ruff format check (like Black)
-            run: ruff format --check .
-    code-quality-checks-post:
+    code-quality-checks:
         runs-on: ubuntu-latest
 
         steps:
