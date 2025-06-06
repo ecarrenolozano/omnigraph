@@ -13,9 +13,7 @@
 # https://opensource.org/license/mit
 #
 
-"""
-This is another graphpack
-"""
+"""Another graphpack for graph operations."""
 
 __all__ = [
     '__version__',

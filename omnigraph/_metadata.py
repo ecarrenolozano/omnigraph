@@ -13,9 +13,7 @@
 # https://opensource.org/license/mit
 #
 
-"""
-Package metadata (version, authors, etc).
-"""
+"""Package metadata (version, authors, etc)."""
 
 __all__ = ['get_metadata']
 
@@ -28,9 +26,8 @@ import toml
 _VERSION = '0.0.1'
 
 
-def get_metadata():
-    """
-    Basic package metadata.
+def get_metadata() -> dict:
+    """Basic package metadata.
 
     Retrieves package metadata from the current project directory or from
     the installed package.
@@ -41,11 +38,9 @@ def get_metadata():
     meta = {}
 
     for project_dir in (here, here.parent):
-
         toml_path = str(project_dir.joinpath(pyproj_toml).absolute())
 
         if os.path.exists(toml_path):
-
             pyproject = toml.load(toml_path)
 
             meta = {
@@ -59,16 +54,13 @@ def get_metadata():
             break
 
     if not meta:
-
         try:
-
             meta = {
-                k.lower(): v for k, v in
-                importlib.metadata.metadata(here.name).items()
+                k.lower(): v
+                for k, v in importlib.metadata.metadata(here.name).items()
             }
 
         except importlib.metadata.PackageNotFoundError:
-
             pass
 
     meta['version'] = meta.get('version', None) or _VERSION
@@ -79,4 +71,4 @@ def get_metadata():
 metadata = get_metadata()
 __version__ = metadata.get('version', None)
 __author__ = metadata.get('author', None)
-__license__ = "MIT"
+__license__ = 'MIT'
