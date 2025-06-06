@@ -52,6 +52,9 @@ docs = [
     "pymdown-extensions>=10.15",
     "mkdocstrings[python]>=0.29.1,<0.30"
 ]
+security = [
+    "bandit"
+]
 tests = [
     "pytest>=6.0",
     "tox>=3.20.1",
@@ -71,6 +74,9 @@ Repository = "https://github.com/saezlab/omnigraph"
 # ===================================
 # =======        TOOL        ========
 # ===================================
+[tool.bandit]
+skips = ["B101"]
+
 [tool.coverage.run]
 omit = [
     "**/test_*.py"
