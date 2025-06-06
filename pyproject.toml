@@ -75,7 +75,9 @@ Repository = "https://github.com/saezlab/omnigraph"
 # =======        TOOL        ========
 # ===================================
 [tool.bandit]
-skips = ["B101"]
+skips = [
+    "B101"  # Name: assert_used
+]
 
 [tool.coverage.run]
 omit = [
